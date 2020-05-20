@@ -1,0 +1,11 @@
+clc;clear;
+k=1000;
+n=2^14;
+Xf=zeros(1,n);
+Xf(randperm(n,k))=rand(1,k);
+x=ifft(Xf)*n;
+X=sfft(x,k);
+stem(abs(Xf),'*' );
+hold on;
+stem(abs(X([1 n-(0:n-2)])/n),'--o');
+hold off;
